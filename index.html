@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7fb">
+    <meta name="description" content="Create and preview a personal user info card using JavaScript DOM manipulation.">
+    <title>User Info Card | DOM Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="page-shell">
+        <header class="page-header">
+            <a class="brand" href="#top" aria-label="User Info Card home">
+                <span>PERSONAL<span class="brand-light">SPACE</span></span>
+            </a>
+            <span class="lab-tag"><span class="status-dot"></span> DOM INTERACTIVE LAB</span>
+        </header>
+
+        <section class="intro" id="top" aria-labelledby="page-title">
+            <div class="intro-copy">
+                <p class="eyebrow">YOUR DETAILS, YOUR CARD</p>
+                <h1 id="page-title">Make it <span>personal.</span></h1>
+                <p class="intro-text">Fill in a few details and see your information come together in a card. Everything
+                    stays right here in your browser.</p>
+            </div>
+            <div class="intro-art" aria-hidden="true">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="art-card"><span class="art-avatar">✦</span><span class="art-line long"></span><span
+                        class="art-line short"></span><span class="art-chip"></span></div>
+                <span class="sparkle sparkle-one">✳</span><span class="sparkle sparkle-two">✦</span>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <section class="panel form-panel" aria-labelledby="form-title">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">STEP 01</p>
+                        <h2 id="form-title">Your information</h2>
+                    </div>
+                    <span class="field-count"><span id="fieldCount">11</span> fields</span>
+                </div>
+                <p class="panel-description">Add as much or as little as you like. Your info is only used to build the
+                    preview.</p>
+
+                <form id="userInfoForm" novalidate>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="fullName">Full name</label>
+                            <input class="form-control" id="fullName" name="fullName" type="text" autocomplete="name"
+                                placeholder="e.g. John Christian Oredo" data-label="Full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input class="form-control" id="email" name="email" type="email" autocomplete="email"
+                                placeholder="john@gmail.com" data-label="Email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input class="form-control" id="age" name="age" type="number" min="0" max="120"
+                                inputmode="numeric" placeholder="e.g. 20" data-label="Age">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone number</label>
+                            <input class="form-control" id="phone" name="phone" type="tel" autocomplete="tel"
+                                placeholder="e.g. +63 906 140 8263" data-label="Phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input class="form-control" id="city" name="city" type="text" autocomplete="address-level2"
+                                placeholder="Where do you live?" data-label="City">
+                        </div>
+                        <div class="form-group">
+                            <label for="occupation">Occupation</label>
+                            <input class="form-control" id="occupation" name="occupation" type="text"
+                                autocomplete="organization-title" placeholder="What do you do?" data-label="Occupation">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday">Birthday</label>
+                            <input class="form-control" id="birthday" name="birthday" type="date" data-label="Birthday">
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input class="form-control" id="website" name="website" type="url" autocomplete="url"
+                                placeholder="https://example.com" data-label="Website">
+                        </div>
+                        <div class="form-group">
+                            <label for="favoriteColor">Favorite color</label>
+                            <select class="form-control" id="favoriteColor" name="favoriteColor"
+                                data-label="Favorite color">
+                                <option value="" selected>Select a color</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Green">Green</option>
+                                <option value="Purple">Purple</option>
+                                <option value="Red">Red</option>
+                                <option value="Yellow">Yellow</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="custom-color-group" id="customColorGroup" hidden>
+                                <label for="customFavoriteColor">Enter your favorite color</label>
+                                <input class="form-control" id="customFavoriteColor" name="customFavoriteColor"
+                                    type="text" placeholder="e.g. Teal">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pronouns">Pronouns</label>
+                            <select class="form-control" id="pronouns" name="pronouns" data-label="Pronouns">
+                                <option value="" selected>Select pronouns</option>
+                                <option value="She / her">She / her</option>
+                                <option value="He / him">He / him</option>
+                                <option value="They / them">They / them</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="aboutMe">A little about me</label>
+                            <textarea class="form-control" id="aboutMe" name="aboutMe" rows="3"
+                                placeholder="What do you enjoy? What should people know?"
+                                data-label="A little about me"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="button button-primary" type="submit">Show my info <span
+                                aria-hidden="true">↗</span></button>
+                        <button class="button button-quiet" id="clearButton" type="reset">Clear form</button>
+                    </div>
+                </form>
+            </section>
+
+            <aside class="panel preview-panel" aria-labelledby="preview-title">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">STEP 02</p>
+                        <h2 id="preview-title">Your info card</h2>
+                    </div>
+                    <span class="preview-icon" aria-hidden="true">✦</span>
+                </div>
+                <p class="panel-description">Your preview appears here when you’re ready.</p>
+
+                <div class="info-card" id="infoCard">
+                    <div class="card-topline"><span class="card-brand">PERSONAL SPACE</span><span class="card-sparkle"
+                            aria-hidden="true">✳</span></div>
+                    <div class="avatar" id="avatarInitials" aria-hidden="true">✦</div>
+                    <h3 class="card-name" id="cardName">Your name</h3>
+                    <p class="card-caption" id="cardCaption">Your personal snapshot</p>
+                    <div class="card-divider"></div>
+                    <p class="card-empty" id="emptyMessage">Fill out the form and choose <strong>Show my info</strong>
+                        to create your card.</p>
+                    <dl class="summary-list" id="summaryList" aria-live="polite"></dl>
+                    <div class="card-footer"><span>MADE BY YOU</span><span>✦</span></div>
+                </div>
+                <p class="privacy-note"><span aria-hidden="true">◉</span> Your information isn’t sent or saved anywhere.
+                </p>
+            </aside>
+        </div>
+
+        <footer class="page-footer"><span>DOM LAB <span class="footer-separator">/</span> VANILLA
+                JAVASCRIPT</span><span>Build a little. Learn a lot.</span></footer>
+    </main>
+</body>
+
+</html>
